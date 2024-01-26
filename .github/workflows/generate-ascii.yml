@@ -4,23 +4,7 @@ on:
   push
 
 jobs:
-  build_job_1:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Install Cowsay Program
-      run: sudo apt-get install cowsay -y
-
-    - name: Execute Cowsay CMD
-      run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
-    
-    - name: Upload Dragon text file
-      uses: actions/upload-artifact@v4
-      with:
-        name: dragon-text-file
-        path: dragon.txt
- 
-  test_job_2:
-    needs: build_job_1
+  ascii-job:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -30,4 +14,6 @@ jobs:
       run: ls -ltra  
 
     - name: Executing shell script
-      run: ./ascii-script.sh
+      run: |
+        chmod +x ascii-script.sh
+        ./ascii-script.sh
