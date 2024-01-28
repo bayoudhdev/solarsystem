@@ -25,6 +25,7 @@ jobs:
         path: dragon.txt    
 
   deploy-job:
+    needs: [ascii-job]
     runs-on: ubuntu-latest
     steps:
     - name: Download Dragon text file
